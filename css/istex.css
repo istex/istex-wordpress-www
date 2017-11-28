@@ -315,7 +315,7 @@ a:hover, a:focus{
 	text-decoration:underline;
 	color:blue;
 }
-.cont-page{
+.page{
 	max-width:1200px;
 	margin:0 auto;
 }
@@ -433,6 +433,11 @@ nav ul {
 		margin:0;
 		word-wrap:break-word;
 	}
+	[type="search"]{
+		width:50%;
+		padding:3px;
+		height:2rem;
+	}
 	/** home-chercheurs
 	=================**/
 
@@ -468,7 +473,7 @@ nav ul {
 	.chiffres>p{
 		width:auto;
 	}
-	/.services .encadre,.usages>p{
+	.services .encadre,.usages>p{
 		text-align:center;
 	}
 	.chiffre{
@@ -493,8 +498,6 @@ nav ul {
 	.disciplines > ul{
 		display:flex;
 		flex-wrap:wrap;
-		margin:0;
-		padding:0;
 		list-style-type:none;
 		justify-content:space-between;
 	}

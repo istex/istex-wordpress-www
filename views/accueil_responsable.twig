@@ -2,39 +2,43 @@
 {% block contenu %}
   <main role="main">
   <section>
-    <header>
-      <h1 class="maj">{{termresponsables.description}}</h1>
-      <h2 class="maj">{{termsoutenez.name}}</h2>
-      <p>{{termsoutenez.description}}</p>
-    </header>
-    <div class="deuxcol">
-      {% for post in postssoutenez %}
-        <article>
-          <h3>{{post.title}}</h3>
-          {{post.content}}
-          {% if post.url_soutenir %}
-            <p class="bouton"><a href="{{ post.url_soutenir }}">{{ post.nom_du_bouton_soutenir }}</a></p>
-          {% endif %}
-        </article>
-      {% endfor %}
-    </div>
+      <header>
+        <h1 class="maj">{{termresponsables.description}}</h1>
+        <h2 class="maj">{{termsoutenez.name}}</h2>
+        <p>{{termsoutenez.description}}</p>
+      </header>
+      <div class="deuxcol page">
+        {% for post in postssoutenez %}
+          <article>
+            <h3>{{post.title}}</h3>
+            {{post.content}}
+            {% if post.url_soutenir %}
+              <p class="bouton"><a href="{{ post.url_soutenir }}">{{ post.nom_du_bouton_soutenir }}</a></p>
+            {% endif %}
+          </article>
+        {% endfor %}
+      </div>
   </section>
 
     <section>
-      <h2>Pour l'ESR ISTEX c'est</h2>
-      <div class="chiffres maj" id="istex-nb-docs">
-        <p class="encadre conteneur"><span class="chiffre">19000000</span>documents</p>
-        <p class="encadre conteneur"><span class="chiffre">309</span>éétablissements</p>
-        <p class="encadre conteneur"><span class="chiffre">20</span>Corpus dans ISTEX</p>
-      </div>
+
+        <h2>Pour l'ESR ISTEX c'est</h2>
+        <div class="chiffres maj page" id="istex-nb-docs">
+          <p class="encadre conteneur"><span class="chiffre">19000000</span>documents</p>
+          <p class="encadre conteneur"><span class="chiffre">309</span>éétablissements</p>
+          <p class="encadre conteneur"><span class="chiffre">20</span>Corpus dans ISTEX</p>
+        </div>
+
     </section>
 
     <section class="services">
-      <h2>{{termservices.name}}</h2>
-      {% if termservices.description %}
-        <p>{{termservices.description}}</p>
-      {% endif %}
-      <div>
+      <header>
+        <h2>{{termservices.name}}</h2>
+        {% if termservices.description %}
+          <p>{{termservices.description}}</p>
+        {% endif %}
+      </header>
+      <div class="page">
         {% for post in postsservices %}
           <div class="encadre">
             {% if post.url_services %}
@@ -54,10 +58,12 @@
         {% endfor %}
       </div>
     </section>
-  <section class="disciplines">
-      <h2>Corpus disponibles</h2>
-      <p>Lorem ipsum dolor sit amet consectum documentae it disciplinium</p>
-      <ul>
+    <section class="disciplines">
+      <header>
+        <h2>Corpus disponibles</h2>
+        <p>Lorem ipsum dolor sit amet consectum documentae it disciplinium</p>
+      </header>
+      <ul class="page">
         <li class="encadre"><span class="abrev">ST</span><div class="detail"><span>Sciences et Techniques</span><strong>1555 articles</strong></div></li>
       </ul>
     </section>
