@@ -1,0 +1,15 @@
+{% extends 'base.twig' %}
+{% block contenu %}
+  <main role="main" class="home">
+    <img src="{{ site.theme.link }}/images/istex.png" alt="ISTEX - Initiative d'excellence en information scientifique et technique">
+    <p class="baseline">Plus de <strong>19 millions</strong> de documents provenant de <strong>19 éditeurs</strong>, soit plus de <strong>7500 titres</strong> et <strong>13000 ebooks</strong> entre 1406 et 2015 pour <abbr title="L'enseignement supérieur et la recherche">l'ESR</abbr></p>
+    <h2>Testez ISTEX</h2>
+      {% include 'inc/istex-search-form.twig' %}
+    <h2 class="vous">Vous êtes ?</h2>
+    <ul class="profile maj">
+      <li><a href="{{site.url}}/chercheur/">Chercheur</a></li>
+      <li><p>Responsable</p></li>
+      <li><p>Curieux</p></li>
+    </ul>
+  </main>
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends 'base.twig' %}
+{% block contenu %}
+  <main role="main">
+
+    <section class="tester">
+      <div class="cont-page">
+        <h1 class="maj">Vous êtes chercheur</h1>
+        <h2>Testez ISTEX</h2>
+          {% include 'inc/istex-search-form.twig' %}
+      </div>
+    </section>
+
+    <section>
+      <div class="cont-page">
+      <header>
+        <h2>Pour la recherche ISTEX c'est</h2>
+    </header>
+        <div class="chiffres maj" id="istex-nb-docs">
+          <p class="encadre conteneur"><span class="chiffre">19000000</span>documents</p>
+          <p class="encadre conteneur"><span class="chiffre">7500</span>titres</p>
+          <p class="encadre conteneur"><span class="chiffre">13000</span>ebooks</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="services">
+      <header>
+        <h2>{{termservices.name}}</h2>
+        <p>{{termservices.description}}</p>
+      </header>
+      <div class="cont-page">
+        {% for post in postschercheurs %}
+          <div class="encadre">
+            {% if post.url_services %}
+              <a href="{{ post.url_services }}">
+            {% endif %}
+            {% if post.thumbnail.src %}
+              <img src="{{ post.thumbnail.src( 'post-thumbnail' ) }}"  alt="{{ post.thumbnail.alt }}" />
+            {% endif %}
+            <h3>{{post.title}}</h3>
+            <div class="bas">
+              <p class="maj">Accéder au service</p>
+            </div>
+            {% if post.url_services %}
+              </a>
+            {% endif %}
+            <div class="buttonabbr maj">Doc</div>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="disciplines">
+      <h2>Les disciplines</h2>
+      <p>Lorem ipsum dolor sit amet consectum documentae it disciplinium</p>
+      <ul>
+        <li class="encadre"><span class="abrev">ST</span><div class="detail"><span>Sciences et Techniques</span><strong>1555 articles</strong></div></li>
+        <li class="encadre"><span class="abrev">SVT</span><div class="detail"><span>Sciences de la vie et santé</span><strong>XXXX articles</strong></div></li>
+        <li class="encadre"><span class="abrev">LSH</span><div class="detail"><span>Lettres et sciences humaines</span><strong>XXXX articles</strong></div></li>
+        <li class="encadre"><span class="abrev">SEG</span><div class="detail"><span>Sciences économiques et gestion</span><strong>XXXX articles</strong></div></li>
+        <li class="encadre"><span class="abrev">SJ</span><div class="detail"><span>Sciences juridiques</span><strong>XXXX articles</strong></div></li>
+        <li class="encadre"><span class="abrev">PLU</span><div class="detail"><span>Pluridisciplinaires</span><strong>XXXX articles</strong></div></li>
+      </ul>
+    </section>
+
+    <section class="usages">
+      <h2>{{termusages.name}}</h2>
+      <p>{{termusages.description}}</p>
+      <div class="cont-page">
+        {% for post in postsusages %}
+          <div class="encadre conteneur">
+            <h3><a class="bloc" href="{{ post.link }}">{{ post.title }}</a></h3>
+            {% if post.sous_titre %}
+              <p>{{ post.sous_titre }}</p>
+            {% endif %}
+            </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    {% if dynamic_sidebar %}
+      <section class="lien_page">
+        {{ dynamic_sidebar }}
+      </section>
+    {% endif %}
+
+  </main>
+{% endblock %}

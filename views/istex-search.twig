@@ -1,0 +1,10 @@
+{% extends 'base.twig' %}
+
+{% block istexsearchcss %}
+  {% include 'inc/istex-search-css.twig' %}
+{% endblock %}
+
+{% block contenu %}
+  <istex-search></istex-search>
+  <istex-results></istex-results>
+{% endblock %}

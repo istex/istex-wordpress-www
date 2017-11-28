@@ -1,0 +1,44 @@
+{% extends 'base.twig' %}
+
+{% block contenu %}
+  <main role="main" class="page">
+    <article class="{{post.category.slug}}">
+      <header>
+        <h1>{{ post.title }}
+         {% if post.sous_titre %}
+            : {{ post.sous_titre }}
+         {% endif %}
+        </h1>
+        {% if post.porte_par %}
+          <p class="portepar"><strong>Projet porté par : </strong>{{ post.porte_par }}</p>
+        {% endif %}
+      </header>
+      <section>
+        {% if post.thumbnail.src %}
+            <img src="{{ post.thumbnail.src }}"/>
+        {% endif %}
+        {{ post.content }}
+      </section>
+      <footer>
+        <div>
+          {% if post.publication_1 %}
+          <h3>Ils ont publié ça...</h3>
+            <a href="{{ post.publication_1 }}"> <img src="{{site.theme.link}}/images/pictopdf.png"></a>
+          {% endif %}
+          {% if post.publication_2 %}
+            <a href="{{ post.publication_2.src }}"> <img src="{{site.theme.link}}/images/pictopdf.png"></a>
+          {% endif %}
+          {% if post.publication_3 %}
+            <a href="{{ post.publication_3.src }}"> <img src="{{site.theme.link}}/images/pictopdf.png"></a>
+          {% endif %}
+        </div>
+        {# lien vers la demo du chantier d'usage #}
+          {% if post.url_test %}
+              <a class="bas" href="{{ post.url_test }}">
+                <h3>On peut le tester ici...</h3>
+              </a>
+          {% endif %}
+      <footer>
+    </article>
+  </main>
+{% endblock %}

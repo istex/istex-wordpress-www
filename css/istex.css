@@ -1,0 +1,701 @@
+@charset "utf-8";
+/* CSS Document
+ cve - inist-cnrs - 10/2017
+ istex.fr */
+/***SANITIZE https://github.com/jonathantneal/sanitize.css/blob/master/sanitize.css ***/
+/*! sanitize.css v5.0.0 | CC0 License | github.com/jonathantneal/sanitize.css */
+
+/* Document (https://html.spec.whatwg.org/multipage/semantics.html#semantics)
+   ========================================================================== */
+
+*,
+::before,
+::after {
+	background-repeat: no-repeat;
+	box-sizing: inherit;
+}
+::before,
+::after {
+	text-decoration: inherit;
+	vertical-align: inherit;
+}
+html {
+	box-sizing: border-box;
+	cursor: default;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+
+/* Sections (https://html.spec.whatwg.org/multipage/semantics.html#sections)
+   ========================================================================== */
+
+article,
+aside,
+footer,
+header,
+nav,
+section {
+	display: block;
+}
+body {
+	margin: 0;
+}
+
+
+/* Grouping content (https://html.spec.whatwg.org/multipage/semantics.html#grouping-content)
+   ========================================================================== */
+
+figcaption,
+figure,
+main {
+	display: block;
+}
+figure {
+	margin: 1em 40px;
+}
+hr {
+	box-sizing: content-box;
+	height: 0;
+	overflow: visible;
+}
+nav ol,
+nav ul {
+	list-style: none;
+}
+pre {
+	font-family: monospace, monospace;
+	font-size: 1em;
+}
+
+/* Text-level semantics (https://html.spec.whatwg.org/multipage/semantics.html#text-level-semantics)
+   ========================================================================== */
+
+a {
+	background-color: transparent;
+	-webkit-text-decoration-skip: objects;
+}
+abbr[title] {
+	border-bottom: none;
+	text-decoration: underline;
+	text-decoration: underline dotted;
+}
+b,
+strong {
+	font-weight: inherit;
+}
+b,
+strong {
+	font-weight: bolder;
+}
+code,
+kbd,
+samp {
+	font-family: monospace, monospace;
+	font-size: 1em;
+}
+dfn {
+	font-style: italic;
+}
+mark {
+	background-color: #ffff00;
+	color: #000000;
+}
+small {
+	font-size: 80%;
+}
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+sub {
+	bottom: -.25em;
+}
+sup {
+	top: -.5em;
+}
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+	vertical-align: middle;
+}
+audio,
+video {
+	display: inline-block;
+}
+audio:not([controls]) {
+	display: none;
+	height: 0;
+}
+img {
+	border-style: none;
+}
+svg:not(:root) {
+	overflow: hidden;
+}
+table {
+	border-collapse: collapse;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+	margin: 0;
+}
+button,
+input,
+select,
+textarea {
+	color: inherit;
+	font-size: inherit;
+	line-height: inherit;
+}
+button,
+input {
+	overflow: visible;
+}
+button,
+select {
+	text-transform: none;
+}
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"] {
+	-webkit-appearance: button;
+}
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+	border-style: none;
+	padding: 0;
+}
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+	outline: 1px dotted ButtonText;
+}
+legend {
+	box-sizing: border-box;
+	color: inherit;
+	display: table;
+	max-width: 100%;
+	padding: 0;
+	white-space: normal;
+}
+progress {
+	display: inline-block;
+	vertical-align: baseline;
+}
+textarea {
+	overflow: auto;
+	resize: vertical;
+}
+[type="checkbox"],
+[type="radio"] {
+	box-sizing: border-box;
+	padding: 0;
+}
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+	height: auto;
+}
+[type="search"] {
+	-webkit-appearance: textfield;
+	outline-offset: -2px;
+}
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+::-webkit-file-upload-button {
+	-webkit-appearance: button;
+	font: inherit;
+}
+
+/* Interactive elements (https://html.spec.whatwg.org/multipage/forms.html#interactive-elements)
+   ========================================================================== */
+
+details,
+menu {
+	display: block;
+}
+summary {
+	display: list-item;
+}
+
+/* Scripting (https://html.spec.whatwg.org/multipage/scripting.html#scripting-3)
+   ========================================================================== */
+
+canvas {
+	display: inline-block;
+}
+template {
+	display: none;
+}
+
+/* User interaction (https://html.spec.whatwg.org/multipage/interaction.html#editing)
+   ========================================================================== */
+
+a,
+area,
+button,
+input,
+label,
+select,
+summary,
+textarea,
+[tabindex] {
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+}
+
+/* ARIA (https://w3c.github.io/html-aria/)
+   ========================================================================== */
+
+[aria-busy="true"] {
+	cursor: progress;
+}
+[aria-controls] {
+	cursor: pointer;
+}
+[aria-hidden="false"][hidden]:not(:focus) {
+	clip: rect(0, 0, 0, 0);
+	display: inherit;
+	position: absolute;
+}
+[aria-disabled] {
+	cursor: default;
+}
+
+/*surcharge de istex widget*/
+/*html,body{font-size:initial}
+h1,.h1,h2,.h2,h3,.h3,body{line-height:unset;}*/
+
+/* COMMUN
+===============================================================================*/
+html{
+  --darkcolor:rgba(153,153,153,1);
+	--intermcolor:rgba(233,233,233,1);
+	--lightcolor:rgba(249,249,249,1);
+}
+img{
+	max-width:100%;
+	height:auto;
+}
+/*titres*/
+h1,.h1 {
+	font-size: 2rem;
+	text-align:center;
+	margin: .67em 0;
+}
+h2,.h2{
+	font-size:1.7rem;
+	font-weight:700;
+	text-align:center;
+}
+h2,.maj,.h2{
+	text-transform:lowercase;
+	font-variant:small-caps;
+}
+/*liens*/
+a{
+	color:blue;
+	text-decoration:none;
+}
+a:hover, a:focus{
+	text-decoration:underline;
+	color:blue;
+}
+.cont-page{
+	max-width:1200px;
+	margin:0 auto;
+}
+/*BODY
+=========*/
+body{
+	background-color:var(--lightcolor);
+	display:flex;
+	flex-direction:column;
+	min-height:100vh;
+	font-family: sans-serif;
+}
+
+/*HEADER
+=========*/
+body > header{
+	background-color:var(--darkcolor);
+	display:flex;
+	justify-content:space-between;
+}
+body > header > h1,body > header > .h1{
+	margin:0;
+}
+body > header a:hover, a:focus,body > header abbr[title]{
+	text-decoration:none;
+}
+/**navigation
+=============**/
+.primary-menu {
+	position: absolute;
+	transform: translateX(-100%) translateZ(0);
+	transition: transform .2s;
+	will-change: transform;
+ }
+ input:checked ~ .primary-menu {
+	 transform: translateX(0);
+	}
+	nav > input{
+		display:none;
+	}
+	nav label,nav a {
+		text-transform:lowercase;
+		font-variant:small-caps;
+	}
+	nav{
+		font-weight:600
+	}
+	nav a {
+	  display: block;
+	  padding: .7em;
+	  margin-bottom: 1px;
+	  text-decoration: none;
+	  background-color: #f9f9f9;
+	}
+	nav a::after{
+		content:"\203A";
+		display:inline-block;
+		float: right;
+	}
+nav label{
+	/*padding:.7em;*/
+	color:#fff;
+	line-height:2.4em;
+	}
+nav ul {
+		background-color:#e9e9e9;
+		padding:0;
+		margin:0;
+		text-align:left;
+	}
+	/*MAIN
+	=========*/
+
+	main.home{
+		text-align:center;
+	}
+
+	/** home
+	=================**/
+	.home{
+			padding:.5em;
+			margin:auto;
+	}
+	ul.profile{
+		padding:0;
+		margin-top:0;
+		list-style-type: none;
+		display:flex;
+		justify-content:space-between;
+	}
+	.vous:before{
+		content:"# ";
+	}
+	.profile li{
+		margin:.2em;
+		width:calc(100vw/3 - 1em);
+		border:1px solid grey;
+		min-height:calc(100vw/3 - 1em);
+		background:url('../images/picto_55.png') center center no-repeat;
+		display:flex;
+		flex-direction:column;
+		justify-content:flex-end;
+	}
+	.profile li:before/*,.usages a:before,.services a:before */{
+		/*content:'\A0';
+		display:block;
+		/*position:absolute;
+		left:0;
+		/*right:0;*/
+		/*top:0;
+		/*bottom:0;*/
+		/*background-color:rgba(0,0,0,0);*/
+	}
+	.profile li p{
+		margin:0;
+		word-wrap:break-word;
+	}
+	/** home-chercheurs
+	=================**/
+
+	main>section:nth-child(2n+1){
+		background-color:var(--intermcolor);
+	}
+	main>section:nth-child(2n){
+		background-color:var(--lightcolor);
+	}
+	section{
+		padding:20px;
+	}
+	.tester{
+		text-align:center;
+	}
+	.chiffres{
+		display:flex;
+		flex-direction:column;
+		list-style-type:none;
+	}
+	.encadre{
+		border:1px solid grey;
+		text-align:left;
+		width: calc(100%/2 - 10px);
+		position:relative;
+	}
+	.usages .encadre{
+		width: calc(100%);
+	}
+	.conteneur,.detail,.bas{
+		padding:20px;
+	}
+	.chiffres>p{
+		width:auto;
+	}
+	/.services .encadre,.usages>p{
+		text-align:center;
+	}
+	.chiffre{
+		display:block;
+		font-size:3rem;
+		font-weight:normal;
+	}
+	.services > div,.usages > div{
+		display:flex;
+		flex-wrap: wrap;
+		justify-content:space-between;
+	}
+	.services > div{
+		align-items:flex-end;
+	}
+	.services img{
+		width:100%;
+	}
+	.services .encadre{
+		background-color: #fff;
+	}
+	.disciplines > ul{
+		display:flex;
+		flex-wrap:wrap;
+		margin:0;
+		padding:0;
+		list-style-type:none;
+		justify-content:space-between;
+	}
+	.disciplines > ul>li{
+		display:flex;
+		flex-direction:column;
+	}
+	.disciplines > ul > li span{
+		display:block;
+	}
+	.disciplines .encadre, .services .encadre, .usages .encadre{
+		margin-bottom:20px
+	}
+	.abrev{
+		font-size:4rem;
+		padding:20px;
+	}
+	.detail,.bas{
+		background-color:black;
+		color:white;
+		flex:1;
+	}
+	.buttonabbr{
+		position:absolute;
+		bottom: 0;
+		right:0;
+		background-color:#999;
+		color:#fff;
+		padding:5px;
+	}
+	.buttonabbr+.buttonabbr{
+		bottom: 2em
+	}
+	.bas a{
+		color:#fff;
+	}
+	.bas p{
+		margin:0;
+	}
+	.lien_page{
+		text-align:center;
+	}
+	#menu-soutenez-istex{
+		list-style: none;
+	}
+	.bouton{
+		text-align:center;
+	}
+	.bouton a{
+		display:inline-block;
+		padding:10px;
+		color:#fff;
+		background-color:blue;
+
+	}
+
+	/** article
+	=================**/
+
+	article > header, article > footer{
+		background-color:var(--intermcolor);
+	}
+	article>section{
+		background-color:var(--lightcolor);
+	}
+	article > header, section > header{
+		text-align:center;
+		padding:20px;
+	}
+	article > header > h1{
+		margin-top:0;
+	}
+	article h2{
+		text-transform:initial;
+		font-variant:normal;
+	}
+	article > section > h2{
+		text-align:left;
+	}
+	.portepar{
+		font-size:1.4rem;
+	}
+	article > section{
+		padding:20px 20px 0 20px;
+	}
+	article > section + section{
+		background-color:var(--intermcolor);
+	}
+	.chantiers_usage footer{
+		display:flex;
+		flex-direction:column;
+	}
+	.chantiers_usage footer > div{
+		padding:20px;
+	}
+
+	/*FOOTER
+	========*/
+	body > footer{
+		background-color:var(--darkcolor);
+		font-size: 80%;
+		margin-top:auto;
+		text-align:center;
+		padding:20px;
+	}
+	body > footer > ul{
+		padding:0;
+		display: flex;
+		list-style-type: none;
+		justify-content: center;
+		flex-wrap:wrap;
+	}
+	body > footer a{
+		padding:0 .5em;
+	}
+	#menu-reseaux-sociaux a::before{
+    /* A FAIRE : ajouter ici l'appel de l'icone twitter content: url(images/Twitter_Social_Icon.png);*/
+	}
+	body > footer>ul:last-child li+li:before{
+		content:"|"
+	}
+
+	/*>600px
+	===============================================*/
+		@media only screen and (min-width:650px){
+			.chantiers_usage footer{
+				flex-direction:row;
+			}
+			.chantiers_usage footer > div {
+				min-width:50%;
+			}
+
+		}
+
+/*>1024px
+===============================================*/
+	@media only screen and (min-width:1024px){
+
+		/*titres*/
+		h1,.h1 {
+			font-size: 3rem;
+			margin: .67em 0;
+		}
+		h2,.h2{
+			font-weight:700;
+			font-size:2.7rem;
+			margin-bottom:0;
+		}
+		.chiffre,.doc{
+			font-size:2.7rem;
+		}
+		main.home{
+			max-width:50%;
+		}
+		.profile li{
+			max-width:10em;
+			min-height:10em;
+			background:url('../images/picto_80.png') center center no-repeat;
+		}
+		.profile a:before{
+			content:'';
+			display:block;
+			height:8.63em;
+		}
+		.encadre{
+			width:auto;
+		}
+		.titbook{
+			margin:0;
+		}
+		.chiffres{
+			flex-direction:row;
+			justify-content:space-between;
+		}
+		.chiffres>p{
+			width:calc(1/3*100% - 20px);
+		}
+		.chiffres p{
+			padding-left:100px;
+			background:url('../images/picto_70.png') 20px center no-repeat;
+		}
+		.disciplines .encadre,.services .encadre{
+			width: calc(100%/3 - 20px);
+		}
+		.usages .encadre{
+			width: calc(100%/2 - 20px);
+		}
+		.buttonabbr{
+			bottom:auto;
+			top: 0;
+		}
+		.buttonabbr+.buttonabbr{
+			bottom:auto;
+			top: 2em
+		}
+		.deuxcol{
+			display:flex;
+			flex-wrap:wrap;
+		}
+		.deuxcol > article{
+			max-width:calc(50% - 20px);
+			margin-right:20px;
+		}
+	}

@@ -1,0 +1,66 @@
+{% extends 'base.twig' %}
+{% block contenu %}
+  <main role="main">
+  <section>
+    <header>
+      <h1 class="maj">{{termresponsables.description}}</h1>
+      <h2 class="maj">{{termsoutenez.name}}</h2>
+      <p>{{termsoutenez.description}}</p>
+    </header>
+    <div class="deuxcol">
+      {% for post in postssoutenez %}
+        <article>
+          <h3>{{post.title}}</h3>
+          {{post.content}}
+          {% if post.url_soutenir %}
+            <p class="bouton"><a href="{{ post.url_soutenir }}">{{ post.nom_du_bouton_soutenir }}</a></p>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+    <section>
+      <h2>Pour l'ESR ISTEX c'est</h2>
+      <div class="chiffres maj" id="istex-nb-docs">
+        <p class="encadre conteneur"><span class="chiffre">19000000</span>documents</p>
+        <p class="encadre conteneur"><span class="chiffre">309</span>éétablissements</p>
+        <p class="encadre conteneur"><span class="chiffre">20</span>Corpus dans ISTEX</p>
+      </div>
+    </section>
+
+    <section class="services">
+      <h2>{{termservices.name}}</h2>
+      {% if termservices.description %}
+        <p>{{termservices.description}}</p>
+      {% endif %}
+      <div>
+        {% for post in postsservices %}
+          <div class="encadre">
+            {% if post.url_services %}
+              <a href="{{ post.url_services }}">
+            {% endif %}
+            {% if post.thumbnail.src %}
+              <img src="{{ post.thumbnail.src( 'post-thumbnail' ) }}"  alt="{{ post.thumbnail.alt }}" />
+            {% endif %}
+            <h3>{{post.title}}</h3>
+            <div class="bas">
+              <p class="maj">Accéder au service</p>
+            </div>
+            {% if post.url_services %}
+              </a>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+  <section class="disciplines">
+      <h2>Corpus disponibles</h2>
+      <p>Lorem ipsum dolor sit amet consectum documentae it disciplinium</p>
+      <ul>
+        <li class="encadre"><span class="abrev">ST</span><div class="detail"><span>Sciences et Techniques</span><strong>1555 articles</strong></div></li>
+      </ul>
+    </section>
+
+  </main>
+{% endblock %}
