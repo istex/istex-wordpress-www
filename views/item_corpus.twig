@@ -1,0 +1,91 @@
+{% extends 'base.twig' %}
+{% block title %}
+  {{ site.name }} - {{corpus.data_WHZy}}
+{% endblock %}
+
+{% block contenu %}
+  <main role="main">
+    <section class="corpusHeader">
+      <div class="page">
+        <img src="{{theme.uri}}/images/logos/{{corpus.data_JP7t}}.png" alt="logo {{corpus.data_WHZy}}">
+        <h1 class="maj">{{corpus.data_FOmf}}</h1>
+        <p>Période de {{corpus.data_DDU1}} à {{corpus.data_dMc5}}</p>
+      </div>
+    </section>
+    <section class="tester">
+      <header>
+        <h2>Avec Istex c'est :</h2>
+      </header>
+      <div class="page">
+        <div class="chiffresDomain">
+          {% if corpus.data_68is %}
+            <p class="encadreLivres">
+              <span class="chiffresCorpus">
+                {{corpus.data_68is}}
+              </span>
+              <span class="intituleChiffre">
+                titres
+              </span>
+            </p>
+          {% else %}
+          {% endif %}
+          {% if corpus.data_IWa6 %}
+            <p class="encadreEbooks">
+              <span class="chiffresCorpus">
+                {{corpus.data_IWa6}}
+              </span>
+              <span class="intituleChiffre">
+                ebooks
+              </span>
+            </p>
+          {% else %}
+          {% endif %}
+        </div>
+      </div>
+    </section>
+      <section class="corpus">
+        <div class="page">
+          <div class="corpusText">
+            <h3>A propos</h3>
+            {{corpus.data_6I4D}}
+            <h3>Bénéficiaires</h3>
+            {{corpus.data_6ik6}}
+            <h4 class="button"><a href="https://loaded-corpus.data.istex.fr/{{corpus.data_uri}}" target="_blank" class="lienext">En savoir plus</a></h4>  
+          </div>
+          <div class="corpusItemDomain">
+            <div class="disciplines">
+              {% if not retrieve.itemdomain %}
+                <a href="/domaine?itemcorpus={{corpus.data_FOmf}}&itemdomain={{corpus.abrev}}">
+              {% endif %}
+              <div class="encadre">
+                <div class="haut">
+                  <div class="abrev">
+                    {{corpus.abrev}}
+                  </div>
+                  <h3>{{corpus.data_jz3G}}</h3>
+                </div>
+                <div class="bas">
+                {% if not retrieve.itemdomain %}
+                  <svg fill="#000000" height="48" viewBox="0 0 24 24" width="48" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M0 0h24v24H0z" fill="none"/>
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+                  </svg>
+                  <span class="maj">Voir la discipline</span>
+                {% endif %}
+                </div>
+              </div>
+              {% if not retrieve.itemdomain %}
+                </a>
+              {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    {% if dynamic_sidebar %}
+      <section class="lien_page">
+        {{ dynamic_sidebar }}
+      </section>
+    {% endif %}
+    </main>
+{% endblock %}

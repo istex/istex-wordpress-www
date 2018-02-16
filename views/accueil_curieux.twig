@@ -1,0 +1,100 @@
+{% extends 'base.twig' %}
+{% block title %}
+  {{ site.name }} - Vous êtes curieux
+{% endblock %}
+{% block contenu %}
+  <main role="main" class="home{{termcurieux.slug}}">
+    <section class="tester">
+      <div class="page">
+        <img src="/wp-content/themes/istex/images/ic_Curieux.svg" alt="" class="mobile" style="text-align:center" >
+        <h1>{{termcurieux.description}}</h1>
+        {% include 'inc/istex-form.twig' %}
+      </div>
+  </section>
+  <section>
+    <header>
+      <h2>ISTEX : intiative etc.</h2>
+    </header>
+      <div class="chiffres maj page" id="istex-nb-docs">
+          <p class="encadre conteneur">
+            <span class="chiffre">{{donneeschercheur.nbdoc}}</span>
+            <span class="texteChiffre">documents</span>
+          </p>
+          <p class="encadre conteneur titres">
+            <span class="chiffre">{{donneeschercheur.titres}}</span>
+            <span class="texteChiffre">titres</span>
+          </p>
+          <p class="encadre conteneur ebooks">
+            <span class="chiffre">{{donneeschercheur.ebooks}}</span>
+            <span class="texteChiffre">ebooks</span>
+          </p>
+      </div>
+  </section>
+  <section>
+    <div class="deuxcol page">
+      {% for post in postscurieux | reverse %}
+      <article class="{{post.slug}}">
+          {% if post.thumbnail.src %}
+            <img src="{{ post.thumbnail.src( 'post-thumbnail' ) }}"  alt="{{ post.thumbnail.alt }}" />
+          {% endif %}
+          <h3>{{post.title}}</h3>
+          {{post.content}}
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  {% if termpourqui.name %}
+  <section class="pourqui">
+    <header>
+      <h2>{{termpourqui.name}}</h2>
+      {% if termpourqui.description %}
+        <p  class="soustitre">{{termpourqui.description}}</p>
+      {% endif %}
+    </header>
+    <div class="page">
+      {% for post in postspourqui %}
+        <div class="button">
+          {% if post.url_du_profil %}
+            <a href="{{site.url}}/?p={{ post.url_du_profil }}" class="profil{{post.id}}">{{post.title}}</a>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  <section class="historique">
+    <header class="page">
+      <h2>{{termhistorique.name}}</h2>
+      {% if termhistorique.description %}
+        <p class="soustitre">{{termhistorique.description}}</p>
+      {% endif %}
+    </header>
+    <div class="page">
+        {% for post in postshistorique %}
+            {% if post.thumbnail.src %}
+              <img src="{{ post.thumbnail.src( 'post-thumbnail' ) }}"  alt="{{ post.thumbnail.alt }}" />
+            {% endif %}
+              {{post.content}}
+        {% endfor %}
+    </div>
+  </section>
+
+    {% if termpresse.name %}
+    <section class="presse">
+      <header class="page">
+        <h2>{{termpresse.name}}</h2>
+        {% if termpresse.description %}
+          <p class="soustitre">{{termpresse.description}}</p>
+        {% endif %}
+      </header>
+      <div class="page">
+        {% for post in postspresse %}
+              {{post.content}}
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+  </main>
+{% endblock %}

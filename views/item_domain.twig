@@ -1,0 +1,92 @@
+{% extends 'base.twig' %}
+{% block title %}
+  {{ site.name }} - {{scientific.name}}
+{% endblock %}
+{% block contenu %}
+    <main role="main">
+    <section class="domainHeader">
+      <div class="page">
+        <div class="abrev">{{scientific.abrev}}</div>
+        <h1 class="maj">{{scientific.name}}</h1>
+      </div>
+    </section>
+    <section class="tester">
+        <section class="corpus">
+          <header>
+            <h2>Concernant les corpus</h2>
+          </header>
+          <div class="page">
+            {% for item in corpus %}
+                {% if item.data_dArk == scientific.uri %}
+                  {% if not retrieve.itemcorpus %}
+                    <a href="/corpus?itemcorpus={{item.data_JP7t}}&itemdomain={{scientific.abrev}}">
+                  {% endif %}
+                  <div class="encadre">
+                    <div class="haut">
+                      <div class="corpusImage">
+                        <img src="{{theme.uri}}/images/logos/{{item.data_JP7t}}.png" alt="logo {{item.data_WHZy}} ">
+                      </div>
+                      <div class="corpusTitle">
+                        {{item.data_WHZy}}
+                        <div class="titreEbooks">
+                              {% if item.data_68is %}
+                              <span class="tiret">{{item.data_68is}} titres&nbsp;</span>
+                            {% endif %}
+                            {% if item.data_IWa6 %}
+                              <span class="tiret">{{item.data_IWa6}} ebooks</span>
+                            {% endif %}
+                        </div>
+                      <div class="periodeCorpus">
+                          de {{item.data_DDU1}} à {{item.data_dMc5}}
+                      </div>
+                      </div>
+                    </div>
+                    <div class="bas">
+                      {% if not retrieve.itemcorpus %}
+                        <svg fill="#000000" height="48" viewBox="0 0 24 24" width="48" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+                        </svg>
+                        <span class="maj">En savoir plus</span>
+                      {% endif %}
+                    </div>
+                  </div>
+                </a>
+                {% endif %}
+            {% endfor %}
+          </div>
+        </section>
+
+    <section class="usages">
+      <header>
+        <h2>Publications remarquables dans ISTEX</h2>
+      </header>
+      <div class="page">
+        {% for publi in spinnedoc %}
+            {% if publi.abrev == scientific.abrev %}
+                <div class="encadre conteneur">
+                <h3><a class="bloc" href="https://api.istex.fr/{{ publi.nE3T }}/fulltext.pdf" target="_blank">{{ publi.agZG }}</a></h3>
+                <p class="publicationAuteurs">
+                    <strong>Auteurs : </strong>
+                    {% for author in publi.WtTx %}
+                        <span class="tiret">{{author}}</span>
+                    {% endfor %}
+                </p>
+                <p class="publicationSujet">
+                    {{publi.zcnL}}
+                </p>
+
+                </div>
+            {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+
+        {% if dynamic_sidebar %}
+            <section class="lien_page">
+                {{ dynamic_sidebar }}
+            </section>
+        {% endif %}
+
+    </main>
+{% endblock %}

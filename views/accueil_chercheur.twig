@@ -1,14 +1,15 @@
 {% extends 'base.twig' %}
-{% block contenu %}
-  <main role="main">
+{% block title %}
+  {{ site.name }} - Vous êtes chercheur
+{% endblock %}
 
+{% block contenu %}
+  <main role="main" class="homechercheur">
     <section class="tester">
-      <header>
-        <h1 class="maj">Vous êtes chercheur</h1>
-        <h2>Testez ISTEX</h2>
-      </header>
       <div class="page">
-          {% include 'inc/istex-search-form.twig' %}
+          <img src="/wp-content/themes/istex/images/ic_Chercheur.svg" alt="" style="text-align:center" class="mobile">
+          <h1> Vous êtes chercheur</h1>
+          {% include 'inc/istex-form.twig' %}
       </div>
     </section>
 
@@ -16,38 +17,61 @@
       <header>
         <h2>Pour la recherche ISTEX c'est</h2>
       </header>
-      <div class="page">
-        <div class="chiffres maj" id="istex-nb-docs">
-          <p class="encadre conteneur"><span class="chiffre">19000000</span>documents</p>
-          <p class="encadre conteneur"><span class="chiffre">7500</span>titres</p>
-          <p class="encadre conteneur"><span class="chiffre">13000</span>ebooks</p>
+        <div class="chiffres maj page" id="istex-nb-docs">
+          <p class="encadre conteneur">
+            <span class="chiffre Count">{{donneeschercheur.nbdoc}}</span>
+            <span class="texteChiffre">documents</span>
+            </p>
+          <p class="encadre conteneur titres">
+            <span class="chiffre">{{donneeschercheur.titres}}</span>
+            <span class="texteChiffre">titres</span>
+            </p>
+          <p class="encadre conteneur ebooks">
+            <span class="chiffre">{{donneeschercheur.ebooks}}</span>
+            <span class="texteChiffre">ebooks</span>
+            </p>
         </div>
-      </div>
     </section>
 
     <section class="services">
       <header>
-        <h2>{{termservices.name}}</h2>
-        <p>{{termservices.description}}</p>
+        <h2>Les services</h2>
+        <p class="soustitre">{{termservices.description}}</p>
       </header>
       <div class="page">
         {% for post in postschercheurs %}
-          <div class="encadre">
-            {% if post.url_services %}
-              <a href="{{ post.url_services }}">
-            {% endif %}
+        {% if post.url_services %}
+          <a href="{{ post.url_services }}"  class="encadre">
+        {% endif %}
+
             {% if post.thumbnail.src %}
               <img src="{{ post.thumbnail.src( 'post-thumbnail' ) }}"  alt="{{ post.thumbnail.alt }}" />
             {% endif %}
+
             <h3>{{post.title}}</h3>
+
+            {% if post.pour.0 %}
+              <div class="buttonpour maj">{{post.pour.0}}</div>
+            {% endif %}
+            {% if post.pour.1 %}
+              <div class="buttonpour maj">{{post.pour.1}}</div>
+            {% endif %}
+
+            {% if post.difficulte %}
+              <img src="{{theme.uri}}/images/{{post.difficulte.0}}.png" class="difficulteService" alt="niveau {{post.difficulte.0}}" title="niveau {{post.difficulte.0}}">
+            {% endif %}
+
             <div class="bas">
-              <p class="maj">Accéder au service</p>
+              <svg fill="#000000" height="48" viewBox="0 0 24 24" width="48" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+              </svg>
+              <span class="maj">Découvrir le service</span>
             </div>
             {% if post.url_services %}
-              </a>
+
             {% endif %}
-            <div class="buttonabbr maj">Doc</div>
-          </div>
+        </a>
         {% endfor %}
       </div>
     </section>
@@ -55,22 +79,35 @@
     <section class="disciplines">
       <header>
         <h2>Les disciplines</h2>
-        <p>Lorem ipsum dolor sit amet consectum documentae it disciplinium</p>
+        <p class="soustitre">Les ressources ISTEX se répartissent dans les {{domains.data|length}} grandes disciplines suivantes.</p>
       </header>
-      <ul class="page">
-        <li class="encadre"><span class="abrev">ST</span><div class="detail"><span>Sciences et Techniques</span><strong>1555 articles</strong></div></li>
-        <li class="encadre"><span class="abrev">SVT</span><div class="detail"><span>Sciences de la vie et santé</span><strong>XXXX articles</strong></div></li>
-        <li class="encadre"><span class="abrev">LSH</span><div class="detail"><span>Lettres et sciences humaines</span><strong>XXXX articles</strong></div></li>
-        <li class="encadre"><span class="abrev">SEG</span><div class="detail"><span>Sciences économiques et gestion</span><strong>XXXX articles</strong></div></li>
-        <li class="encadre"><span class="abrev">SJ</span><div class="detail"><span>Sciences juridiques</span><strong>XXXX articles</strong></div></li>
-        <li class="encadre"><span class="abrev">PLU</span><div class="detail"><span>Pluridisciplinaires</span><strong>XXXX articles</strong></div></li>
-      </ul>
+      <div class="page">
+        {% for discipline in domains.data %}
+          <a href="/domaine?itemdomain={{discipline.BhIX}}">
+            <div class="encadre">
+              <div class="haut">
+                <div class="abrev">
+                  {{discipline.BhIX}}
+                </div>
+                <h3>{{discipline.a20Y}}</h3>
+              </div>
+              <div class="bas">
+                <svg fill="#000000" height="48" viewBox="0 0 24 24" width="48" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+                </svg>
+                <span class="maj">Voir la discipline</span>
+              </div>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
     </section>
 
     <section class="usages">
-      <header>
+      <header class="page">
         <h2>{{termusages.name}}</h2>
-        <p>{{termusages.description}}</p>
+        <p class="soustitre">{{termusages.description}}</p>
       </header>
       <div class="page">
         {% for post in postsusages %}

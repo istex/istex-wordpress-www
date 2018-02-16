@@ -1,0 +1,19 @@
+{% extends 'base.twig' %}
+{% block title %}
+  {{ site.name }} - {{ post.slug }}
+{% endblock %}
+
+{% block contenu %}
+  <main role="main" class="page">
+    <article>
+      <header class="page">
+        <h1>{{ post.title }}
+         {% if post.sous_titre %}
+            : {{ post.sous_titre }}
+         {% endif %}
+        </h1>
+      </header>
+          {{ post.content }}
+    </article>
+  </main>
+{% endblock %}

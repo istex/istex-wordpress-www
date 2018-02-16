@@ -1,35 +1,40 @@
 {% extends 'base.twig' %}
+{% block title %}
+  {{ site.name }} - {{ post.slug }}
+{% endblock %}
 
 {% block contenu %}
-  <main role="main" class="page">
-    <article class="{{post.category.slug}}">
-      <header>
+  <main role="main">
+    <article>
+      <header class="page">
         <h1>{{ post.title }}
          {% if post.sous_titre %}
             : {{ post.sous_titre }}
          {% endif %}
         </h1>
         {% if post.porte_par %}
-          <p class="portepar"><strong>Projet porté par : </strong>{{ post.porte_par }}</p>
+          <p class="soustitre"><strong>Projet porté par : </strong>{{ post.porte_par }}</p>
         {% endif %}
       </header>
-      <section>
-        {% if post.thumbnail.src %}
-            <img src="{{ post.thumbnail.src }}"/>
-        {% endif %}
-        {{ post.content }}
+      <section class="claire">
+        <div class="page">
+          {% if post.thumbnail.src %}
+              <img src="{{ post.thumbnail.src }}"/>
+          {% endif %}
+          {{ post.content }}
+        </div>
       </section>
-      <footer>
+      <footer class="page">
         <div>
           {% if post.publication_1 %}
           <h3>Ils ont publié ça...</h3>
-            <a href="{{ post.publication_1 }}"> <img src="{{site.theme.link}}/images/pictopdf.png"></a>
+            <a href="{{ post.get_field('publication_1') }}"><img src="{{site.theme.link}}/images/ic_PDF.svg" alt="" width="50" height="50"></a>
           {% endif %}
           {% if post.publication_2 %}
-            <a href="{{ post.publication_2.src }}"> <img src="{{site.theme.link}}/images/pictopdf.png"></a>
+            <a href="{{ post.get_field('publication_2') }}"> <img src="{{site.theme.link}}/images/ic_PDF.svg" width="50" height="50" alt=""></a>
           {% endif %}
           {% if post.publication_3 %}
-            <a href="{{ post.publication_3.src }}"> <img src="{{site.theme.link}}/images/pictopdf.png"></a>
+            <a href="{{ post.get_field('publication_3') }}"> <img src="{{site.theme.link}}/images/ic_PDF.svg" width="50" height="50" alt=""></a>
           {% endif %}
         </div>
         {# lien vers la demo du chantier d'usage #}
@@ -38,7 +43,7 @@
                 <h3>On peut le tester ici...</h3>
               </a>
           {% endif %}
-      <footer>
+      </footer>
     </article>
   </main>
 {% endblock %}
