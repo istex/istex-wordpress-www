@@ -2,8 +2,8 @@
 $context = Timber::get_context();
 
 // récuperation des données en ligne
-$context['corpus'] = json_decode(file_get_contents('https://loaded-corpus.data.istex.fr/api/run/all-documents?maxSize=1000'), true);
-$documents = json_decode(file_get_contents('https://api.istex.fr/document/?q=*&size=0&sid=istex-www'), true);
+$documents = get_data_istex_with_cache('documents', 'https://api.istex.fr/document/?q=*&size=0&sid=istex-www');
+$context['corpus'] = get_data_istex_with_cache('corpus','https://loaded-corpus.data.istex.fr/api/run/all-documents?maxSize=1000');
 $from = $upto = 2000;
 
 // traitement corpus

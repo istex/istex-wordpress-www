@@ -11,9 +11,9 @@ $domainRetrieve = $_GET['itemdomain'];
 $context['retrieve'] = array('itemcorpus' => $corpusRetrieve, "itemdomain" => $domainRetrieve,  "url" => $urlRetrieve);
 
 /* Récupération des données lodex */
-$corpus = json_decode(file_get_contents('https://loaded-corpus.data.istex.fr/api/run/all-documents?maxSize=1000'), true);
-$domains = json_decode(file_get_contents('https://scientific-domain.data.istex.fr/api/run/all-documents'), true);
-$spinned = json_decode(file_get_contents('https://pinned-docs.data.istex.fr/api/run/all-documents?$limit=1000'), true);
+$spinned = get_data_istex_with_cache('spinned','https://pinned-docs.data.istex.fr/api/run/all-documents?$limit=1000');
+$domains = get_data_istex_with_cache('domains','https://scientific-domain.data.istex.fr/api/run/all-documents');
+$corpus = get_data_istex_with_cache('corpus','https://loaded-corpus.data.istex.fr/api/run/all-documents?maxSize=1000');
 
 // traitement corpus
 for ($i = 0; $i < $corpus['total']; $i++) {
@@ -47,4 +47,3 @@ for ($i = 0; $i < $spinned['total']; $i++) {
 	}
 }
 Timber::render('item_domain.twig', $context);
-//print_r($context['scientific']);

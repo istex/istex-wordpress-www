@@ -3,9 +3,9 @@
 $context = Timber::get_context();
 
 /* Récupération des données */
-$documents = json_decode(file_get_contents('https://api.istex.fr/document/?q=*&size=0&sid=istex-www'), true);
-$context['domains'] = json_decode(file_get_contents('https://scientific-domain.data.istex.fr/api/run/all-documents'), true);
-$context['corpus'] = json_decode(file_get_contents('https://loaded-corpus.data.istex.fr/api/run/all-documents?maxSize=1000'), true);
+$documents = get_data_istex_with_cache('documents', 'https://api.istex.fr/document/?q=*&size=0&sid=istex-www');
+$context['domains'] = get_data_istex_with_cache('domains','https://scientific-domain.data.istex.fr/api/run/all-documents');
+$context['corpus'] = get_data_istex_with_cache('corpus','https://loaded-corpus.data.istex.fr/api/run/all-documents?maxSize=1000');
 
 // traitement corpus
 for ($i = 0; $i < $context['corpus']['total']; $i++) {
@@ -32,4 +32,3 @@ $context['dynamic_sidebar'] = Timber::get_widgets('soutenir_istex');
 
 
 Timber::render('accueil_chercheur.twig', $context);
-//print_r($context['postsusages']);

@@ -2,7 +2,7 @@
 {% block contenu %}
   <main role="main" class="home page">
     <h1><img src="{{ site.theme.link }}/images/istex_logo.svg" alt="ISTEX" title="Initiative d'excellence en information scientifique et technique" width="200" height="50"></h1>
-    <h2 class="baseline compacte"><strong>{{donneesgenerales.nbdoc|split(' ')[0]}} millions</strong> de documents provenant de <strong>{{donneesgenerales.corpus}} éditeurs</strong> de littérature scientifique dans toutes les disciplines, soit plus de <strong>{{donneesgenerales.titres}} revues</strong> et <strong>{{donneesgenerales.ebooks}} ebooks</strong> entre {{donneesgenerales.from}} et {{donneesgenerales.upto}} pour <abbr title="L'enseignement supérieur et la recherche">l'ESR</abbr></h2>
+    <h2 class="baseline compacte"><strong>{{donneesgenerales.nbdoc|split(' ')[0]}} millions</strong> de documents provenant de <strong>{{donneesgenerales.corpus}} corpus</strong> de littérature scientifique dans toutes les disciplines, soit plus de <strong>{{donneesgenerales.titres}} revues</strong> et <strong>{{donneesgenerales.ebooks}} ebooks</strong> entre {{donneesgenerales.from}} et {{donneesgenerales.upto}} pour <abbr title="L'enseignement supérieur et la recherche">l'ESR</abbr></h2>
       {% include 'inc/istex-form.twig' %}
     <h2 class="vous">Vous êtes ?</h2>
     <ul class="profile compacte">

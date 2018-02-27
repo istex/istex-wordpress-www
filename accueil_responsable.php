@@ -3,10 +3,10 @@
 $context = Timber::get_context();
 
 // récuperation des données en ligne
-$context['corpus'] = json_decode(file_get_contents('https://loaded-corpus.data.istex.fr/api/run/all-documents?maxSize=1000'), true);
-$context['domains'] = json_decode(file_get_contents('https://scientific-domain.data.istex.fr/api/run/all-resources/'), true);
-$documents = json_decode(file_get_contents('https://api.istex.fr/document/?q=*&size=0&sid=istex-www'), true);
-$etablissement = file_get_contents('https://authorized-user.data.istex.fr/api/run/count-all');
+$documents = get_data_istex_with_cache('documents', 'https://api.istex.fr/document/?q=*&size=0&sid=istex-www');
+$context['domains'] = get_data_istex_with_cache('domains','https://scientific-domain.data.istex.fr/api/run/all-documents');
+$context['corpus'] = get_data_istex_with_cache('corpus','https://loaded-corpus.data.istex.fr/api/run/all-documents?maxSize=1000');
+$etablissement = get_data_istex_with_cache('etablissement','https://authorized-user.data.istex.fr/api/run/count-all');
 
 // traitement corpus
 for ($i = 0; $i < $context['corpus']['total']; $i++) {
@@ -28,6 +28,7 @@ $context['donneesresponsable'] = array(	"nbdoc" => number_format($documents['tot
 										"etablissement" => number_format($etablissement,'0',',',' '),
 										"corpus" => number_format($context['corpus']['total'],'0',',',' ')
 								);
+
 
 $context['postsservices'] = Timber::get_posts(array('category_name' => 'services_institutions' ));
 $context['termservices'] = new TimberTerm('services_institutions');

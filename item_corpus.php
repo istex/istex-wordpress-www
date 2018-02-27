@@ -11,8 +11,8 @@ $domainRetrieve = $_GET['itemdomain'];
 $context['retrieve'] = array('itemcorpus' => $corpusRetrieve, "itemdomain" => $domainRetrieve,  "url" => $urlRetrieve);
 
 /* Récupération des données lodex */
-$corpus = json_decode(file_get_contents('https://loaded-corpus.data.istex.fr/api/run/all-documents?maxSize=1000'), true);
-$domains = json_decode(file_get_contents('https://scientific-domain.data.istex.fr/api/run/all-documents'), true);
+$domains = get_data_istex_with_cache('domains','https://scientific-domain.data.istex.fr/api/run/all-documents');
+$corpus = get_data_istex_with_cache('corpus','https://loaded-corpus.data.istex.fr/api/run/all-documents?maxSize=1000');
 
 // traitement corpus
 for ($i = 0; $i < $corpus['total']; $i++) {

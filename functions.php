@@ -45,5 +45,26 @@ function wpc_mime_types($mimes) {
   return $mimes;
 }
 add_filter('upload_mimes', 'wpc_mime_types');
-/*make functions available in Twig (https://timber.github.io/docs/guides/functions/)*/
-/**
+
+/* Mise en cache des données */
+function get_data_istex_with_cache($key, $url) {
+  if (!apcu_exists($key)){
+    $opts = array('http' =>
+      array(
+        'timeout' => 5
+      )
+    );                       
+    $context  = stream_context_create($opts);
+    $result = file_get_contents($url, false, $context);
+    if ($result === false){
+      $data =apcu_fetch($key . '_latest');
+    }
+    else {
+      $data = json_decode($result, true);
+    }
+    apcu_store($key, $data,3600);
+    apcu_store($key . '_latest', $data);
+  }
+  $data = apcu_fetch($key); 
+  return $data;
+}
