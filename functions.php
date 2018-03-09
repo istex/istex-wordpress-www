@@ -47,6 +47,7 @@ function wpc_mime_types($mimes) {
 add_filter('upload_mimes', 'wpc_mime_types');
 
 /* Mise en cache des données */
+/* use cache */
 function get_data_istex_with_cache($key, $url) {
   if (!apcu_exists($key)){
     $opts = array('http' =>
@@ -56,11 +57,14 @@ function get_data_istex_with_cache($key, $url) {
     );                       
     $context  = stream_context_create($opts);
     $result = file_get_contents($url, false, $context);
-    if ($result === false){
-      $data =apcu_fetch($key . '_latest');
+    if ($result === false OR $result == ""){
+      $data = apcu_fetch($key . '_latest');
     }
     else {
       $data = json_decode($result, true);
+      if ($data === NULL) {
+        $data = apcu_fetch($key . '_latest');
+      }
     }
     apcu_store($key, $data,3600);
     apcu_store($key . '_latest', $data);

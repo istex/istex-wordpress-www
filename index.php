@@ -1,6 +1,10 @@
 <?php
 $context = Timber::get_context();
 
+if (!empty($_GET['clearcache'])) {
+	apcu_clear_cache();
+}
+
 // récuperation des données en ligne
 $documents = get_data_istex_with_cache('documents', 'https://api.istex.fr/document/?q=*&size=0&sid=istex-www');
 $context['corpus'] = get_data_istex_with_cache('corpus','https://loaded-corpus.data.istex.fr/api/run/all-documents?maxSize=1000');
