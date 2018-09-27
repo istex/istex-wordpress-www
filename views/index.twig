@@ -1,14 +1,21 @@
 {% extends 'base.twig' %}
 {% block contenu %}
+
   <main role="main" class="home page">
     <h1><img src="{{ site.theme.link }}/images/istex_logo.svg" alt="ISTEX" title="Initiative d'excellence en information scientifique et technique" width="200" height="50"></h1>
     <h2 class="baseline compacte"><strong>{{donneesgenerales.nbdoc|split(' ')[0]}} millions</strong> de documents provenant de <strong>{{donneesgenerales.corpus}} corpus</strong> de littérature scientifique dans toutes les disciplines, soit plus de <strong>{{donneesgenerales.titres}} revues</strong> et <strong>{{donneesgenerales.ebooks}} ebooks</strong> entre {{donneesgenerales.from}} et {{donneesgenerales.upto}} pour <abbr title="L'enseignement supérieur et la recherche">l'ESR</abbr></h2>
-      {% include 'inc/istex-form.twig' %}
+
+	  {% include 'inc/istex-form.twig' %}
     <h2 class="vous">Vous êtes ?</h2>
     <ul class="profile compacte">
-      <li class="chercheur maj"><a href="{{site.url}}/chercheur/">Chercheur</a></li>
-      <li class="responsable maj"><a href="{{site.url}}/responsable/">Responsable</a></li>
-      <li class="curieux maj"><a href="{{site.url}}/curieux/">Curieux</a></li>
+      <li class="chercheur maj"><a href="{{site.url}}/chercheur/" title="Des services d'accès aux ressources ISTEX dont vous pouvez avoir besoin pour vos recherches.">Chercheur</a></li>
+      <li class="responsable maj"><a href="{{site.url}}/responsable/" title="Des informations à destination des responsables d'établissements pour soutenir ISTEX et pour intégrer ISTEX dans vos outils documentaires.">Responsable</a></li>
+      <li class="curieux maj"><a href="{{site.url}}/curieux/" title="Des informations sur ce qu'est ISTEX ainsi que sa genèse.">Curieux</a></li>
     </ul>
+	      <p class="button adherer"><a href="https://adhesion.istex.fr/login">
+          <svg class="lien_ext" fill="#000000" height="48" viewBox="0 0 24 24" width="48" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+              </svg>Adhérer</a></p>
   </main>
 {% endblock %}

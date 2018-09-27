@@ -322,6 +322,12 @@ h1,.h1 {
 	text-align:center;
 	margin: .67em 0;
 }
+.cgu h1,.cgu h2{
+	text-align:left;
+}
+.cgu p{
+	margin-left:40px;
+}
 h2,.h2 {
 	font-size:3rem;
 	font-weight:500;
@@ -568,6 +574,29 @@ ul.profile{
 .profile li p{
 	margin:0;
 	word-wrap:break-word;
+}
+.button.adherer a{
+	border:1px solid #fff;
+	position:relative;
+	font-family:Cookie, sans-serif;
+	font-variant:normal;
+	text-transform:initial;
+	font-size:4.5rem;
+	padding:0px 50px 0px 75px;
+}
+.button.adherer a:hover,.button.adherer a:focus{
+		/*border:3px solid #fff;*/
+}
+.lien_ext{
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+  position:absolute;
+  left:35px;
+  top:13px;
 }
 
 	/** HOME-PROFIL
@@ -874,7 +903,7 @@ ul.profile{
 		padding-left:.5rem;
 	}
 	.istex-results-item-abstract,ol.istex-results-items li.istex-results-item p.istex-results-item-abstract{
-		color:#fff;
+		color:#fff!important;
 	}
 /*surcharge style demo*/
 	.istex-search-form input.istex-search-submit{
@@ -1121,6 +1150,9 @@ ul.profile{
     font-size: 1.8rem;
     content: " - ";
 }
+.cgu ul{
+	margin-left:2rem;
+}
 /*Page Contact
 ------------*/
 .wpcf7-form input:not([type='submit']),.wpcf7-form textarea{
@@ -1192,7 +1224,9 @@ ul.profile{
 		border-top:0;
 		border-radius:0 0 5px 5px;
 	}
-
+	.exergue{
+		color:red;
+	}
 	/*>618px
 	===============================================*/
 		@media only screen and (min-width:618px){
@@ -1325,7 +1359,7 @@ ul.profile{
 		.disciplines .encadre:nth-child(3n),.services .encadre:nth-child(3n){
 			margin-right:0;
 		}
-		.usages .encadre{
+		.usages .encadre,.colcol{
 			width: calc(100%/2 - 20px);
 			margin-right:30px;
 		}
@@ -1341,7 +1375,7 @@ ul.profile{
 			    flex-wrap:wrap;
 		}
 		.deuxcol > article,	.la-gouvernance>ul>li{
-			max-width:calc(50% - 20px);
+			width:calc(50% - 20px);
 			margin-right:20px;
 		}
 		.deuxcol > article:nth-child(2n+3){

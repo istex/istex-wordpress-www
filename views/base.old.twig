@@ -21,7 +21,6 @@
     <link rel="stylesheet" type="text/css" href="{{ site.theme.link }}/css/istex.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"> 
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -31,6 +30,37 @@
     {{ wp_head }}
   </head>
   <body>
+    <header role="banner">
+      {% block navigation %}
+
+			<nav id="site-navigation" class="main-navigation"  role="navigation" aria-label="menu-principal">
+          <input type="checkbox" id="toggle-nav" aria-label="open/close navigation">
+          <label for="toggle-nav" class="nav-button maj">
+            <svg fill="#cad733" height="48" viewBox="0 0 24 24" width="48" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+            </svg>
+          </label>
+          <ul class="primary-menu">
+            {% for item in principal.get_items %}
+              <li class="menu-item"><a class="maj {{item.class}}" href="{{item.link}}">{{item.title}}</a>
+            {% endfor %}
+          </ul>
+      </nav>
+
+      {% endblock %}
+      {% block titre %}
+        <p class="banner">
+          {% if is_home %}
+          {% else %}
+            <a href="{{site.url}}"><img src="{{ site.theme.link }}/images/istex_logo.svg" alt="ISTEX - Initiative d'excellence en information scientifique et technique" width="60" height="60"></a>
+          {% endif %}
+        </p>
+      {% endblock %}
+      <div class="actus">
+        <!--<img src="images/cloche.png" alt="cloche">-->
+      </div>
+    </header>
     {% block contenu %}
     {% endblock %}
  <footer role="contentinfo" >
@@ -83,11 +113,10 @@
       defaultSort: ''
     };
     </script>
-     <script id="iwh_script" src="//web-header.delivery.istex.fr/bundle.js" ></script>
     <script src="//widgets.istex.fr/bower_components/angular/angular.min.js"></script>
     <script src="//widgets.istex.fr/slider/rzslider.js"></script>
     <script src="//widgets.istex.fr/app.min.js"></script>
-	<!-- Piwik -->
+<!-- Piwik -->
 <script type="text/javascript">
   var _paq = _paq || [];
     

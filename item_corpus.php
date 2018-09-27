@@ -23,7 +23,7 @@ for ($i = 0; $i < $corpus['total']; $i++) {
 			$context['corpus'][$newk] = $context['corpus'][$k];
 			unset($context['corpus'][$k]);
 		}
-		$slugdomain = "ark:".explode("ark:", $context['corpus']['data_kEyw'])[1];
+		$slugdomain = "ark:".explode("ark:", $context['corpus']['data_kEyw'][0])[1];
 		for ($j = 0; $j < $domains['total']; $j++) {
 			if ($domains['data'][$j]['uri'] == $slugdomain) {
 				$context['corpus']['abrev'] = $domains['data'][$j]['BhIX'];

@@ -8,6 +8,7 @@
     <div class="page">
         <img src="/wp-content/themes/istex/images/ic_Responsable.svg" alt="" class="mobile" style="text-align:center" >
         <h1>{{termresponsables.description}}</h1>
+
         {% include 'inc/istex-form.twig' %}
     </div>
   </section>
@@ -16,6 +17,11 @@
       <header>
         <h2>{{termsoutenez.name}}</h2>
         <p class="soustitre">{{termsoutenez.description}}</p>
+			      <p class="button  adherer"><a href="https://adhesion.istex.fr/login">
+          <svg class="lien_ext" fill="#000000" height="48" viewBox="0 0 24 24" width="48" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+              </svg>Adhérer</a></p>
       </header>
       <div class="deuxcol page">
         {% for post in postssoutenez %}

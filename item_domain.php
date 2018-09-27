@@ -22,7 +22,7 @@ for ($i = 0; $i < $corpus['total']; $i++) {
 			$newk = "data_".$k;
 			$context['corpus'][$i][$newk] = $context['corpus'][$i][$k];
 			unset($context['corpus'][$i][$k]);
-			$context['corpus'][$i][data_dArk] = "ark:".explode("ark:", $context['corpus'][$i]['data_kEyw'])[1];
+			$context['corpus'][$i][data_dArk] = "ark:".explode("ark:", $context['corpus'][$i]['data_kEyw'][0])[1];
 		}
 }
 
